@@ -159,7 +159,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Random random = new Random();
         while (true) {
-            System.out.println("Please choose a spot to place an X (1-81)");
+            System.out.println("Starting Player can place an X anywhere from spot (1-81)");
             int playerPosition = scanner.nextInt();
             while(playerPositions.contains(playerPosition) || aiPositions.contains(playerPosition)) {
                 System.out.println("Spot is already taken. Please choose another position");
@@ -176,9 +176,12 @@ public class Main {
                 break;
             }
 
-            int aiPosition = random.nextInt(81)+1;
+            List<Integer>  forcedChoices = cpuForceMovement(playerPosition);
+            int randomIndex = random.nextInt(forcedChoices.size());
+            int aiPosition = forcedChoices.get(randomIndex);
             while(playerPositions.contains(aiPosition) || aiPositions.contains(aiPosition)) {
-                aiPosition = random.nextInt(81)+1;
+                randomIndex = random.nextInt(forcedChoices.size());
+                aiPosition = forcedChoices.get(randomIndex);
             }
             placement(gameBoard, aiPosition, "Other");
             printingGameBoard(gameBoard);
@@ -188,10 +191,7 @@ public class Main {
                 System.out.println(result);
                 break;
             }
-
-
         }
-
     }
 
     //Helper method to print out the game board
@@ -788,6 +788,45 @@ public class Main {
         resettingGridSeven(gameBoard);
         resettingGridEight(gameBoard);
         resettingGridNine(gameBoard);
+    }
+
+    public static String playerforceMovement(int position) {
+        return switch (position) {
+            case 1, 73, 64, 55, 46, 37, 28, 19, 10 -> "You must place an X in grid One";
+            case 2, 11, 20, 29, 38, 47, 56, 65, 74 -> "You must place an X in grid Two";
+            case 3, 12, 21, 30, 39, 48, 57, 66, 75 -> "You must place an X in grid Three";
+            case 4, 13, 22, 31, 40, 49, 58, 67, 76 -> "You must place an X in grid Four";
+            case 5, 14, 23, 32, 41, 50, 59, 68, 77 -> "You must place an X in grid Five";
+            case 6, 15, 24, 33, 42, 51, 60, 69, 78 -> "You must place an X in grid Six";
+            case 7, 16, 25, 34, 43, 52, 61, 70, 79 -> "You must place an X in grid Seven";
+            case 8, 17, 26, 35, 44, 53, 62, 71, 80 -> "You must place an X in grid Eight";
+            case 9, 18, 27, 36, 45, 54, 63, 72, 81 -> "You must place an X in grid Nine";
+            default -> "";
+        };
+    }
+
+    public static List<Integer> cpuForceMovement(int position) {
+        switch (position) {
+            case  1, 73, 64, 55, 46, 37, 28, 19, 10:
+                return List.of( 1, 2, 3, 4, 5 ,6, 7, 8, 9);
+            case 2, 11, 20, 29, 38, 47, 56, 65, 74:
+                return List.of(10, 11, 12, 13, 14, 15, 16, 17, 18);
+            case 3, 12, 21, 30, 39, 48, 57, 66, 75:
+                return List.of(19, 20, 21, 22, 23, 24, 25, 26, 27);
+            case 4, 13, 22, 31, 40, 49, 58, 67, 76:
+                return List.of(28, 29, 30, 31, 32, 33, 34, 35, 36);
+            case 5, 14, 23, 32, 41, 50, 59, 68, 77:
+                return List.of(37, 38, 39, 40, 41, 42, 43, 44, 45);
+            case 6, 15, 24, 33, 42, 51, 60, 69, 78:
+                return List.of(46, 47, 48, 49, 50, 51, 52, 53, 54);
+            case 7, 16, 25, 34, 43, 52, 61, 70, 79:
+                return List.of(55, 56, 57, 58, 59, 60, 61, 62, 63);
+            case 8, 17, 26, 35, 44, 53, 62, 71, 80:
+                return List.of(64, 65, 66, 67, 68, 69, 70, 71, 72);
+            case 9, 18, 27, 36, 45, 54, 63, 72, 81:
+                return List.of(73, 74, 75, 76, 77, 78, 79, 80, 81);
+        }
+        return List.of();
     }
 
     public static String winCondition() {
