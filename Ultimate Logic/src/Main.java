@@ -146,6 +146,7 @@ public class Main {
             placement(gameBoard, playerPosition, "Player");
             printingGameBoard(gameBoard);
             checkingAllGrids(gameBoard);
+            System.out.println(playerPositions);
             //System.out.println(playerPositions);
             System.out.println("The AI is now thinking ");
             System.out.println();
@@ -456,12 +457,18 @@ public class Main {
                     gameBoard[row][col] = 'X';
                 }
             }
+            for (int i = 1; i < 10; i++) {
+                playerPositions.add(i);
+            }
         }
         if (winnerOfGridOne.equals("AI")) {
             for (int row = 0; row < 3; row++) {
                 for (int col = 0; col < 3; col++) {
                     gameBoard[row][col] = 'O';
                 }
+            }
+            for (int i = 1; i < 10; i++) {
+                playerPositions.add(i);
             }
         }
     }
@@ -485,12 +492,18 @@ public class Main {
                     gameBoard[row][col] = 'X';
                 }
             }
+            for (int i = 10; i < 19; i++) {
+                playerPositions.add(i);
+            }
         }
         if (winnerOfGridTwo.equals("AI")) {
             for (int row = 0; row < 3; row++) {
                 for (int col = 4; col < 7; col++) {
                     gameBoard[row][col] = 'O';
                 }
+            }
+            for (int i = 10; i < 19; i++) {
+                aiPositions.add(i);
             }
         }
     }
@@ -514,12 +527,18 @@ public class Main {
                     gameBoard[row][col] = 'X';
                 }
             }
+            for (int i = 19; i < 28; i++) {
+                playerPositions.add(i);
+            }
         }
         if (winnerOfGridThree.equals("AI")) {
             for (int row = 0; row < 3; row++) {
                 for (int col = 8; col < 11; col++) {
                     gameBoard[row][col] = 'O';
                 }
+            }
+            for (int i = 19; i < 28; i++) {
+                aiPositions.add(i);
             }
         }
     }
@@ -543,12 +562,18 @@ public class Main {
                     gameBoard[row][col] = 'X';
                 }
             }
+            for (int i = 28; i < 37; i++) {
+                playerPositions.add(i);
+            }
         }
         if (winnerOfGridFour.equals("AI")) {
             for (int row = 4; row < 7; row++) {
                 for (int col = 0; col < 3; col++) {
                     gameBoard[row][col] = 'O';
                 }
+            }
+            for (int i = 28; i < 37; i++) {
+                aiPositions.add(i);
             }
         }
     }
@@ -572,12 +597,18 @@ public class Main {
                     gameBoard[row][col] = 'X';
                 }
             }
+            for (int i = 37; i < 46; i++) {
+                playerPositions.add(i);
+            }
         }
         if (winnerOfGridFive.equals("AI")) {
             for (int row = 4; row < 7; row++) {
                 for (int col = 4; col < 7; col++) {
                     gameBoard[row][col] = 'O';
                 }
+            }
+            for (int i = 37; i < 46; i++) {
+                aiPositions.add(i);
             }
         }
     }
@@ -601,12 +632,18 @@ public class Main {
                     gameBoard[row][col] = 'X';
                 }
             }
+            for (int i = 46; i < 55; i++) {
+                playerPositions.add(i);
+            }
         }
         if (winnerOfGridSix.equals("AI")) {
             for (int row = 4; row < 7; row++) {
                 for (int col = 8; col < 11; col++) {
                     gameBoard[row][col] = 'O';
                 }
+            }
+            for (int i = 46; i < 55; i++) {
+                aiPositions.add(i);
             }
         }
     }
@@ -630,12 +667,18 @@ public class Main {
                     gameBoard[row][col] = 'X';
                 }
             }
+            for (int i = 55; i < 64; i++) {
+                playerPositions.add(i);
+            }
         }
         if (winnerOfGridSeven.equals("AI")) {
             for (int row = 8; row < 11; row++) {
                 for (int col = 0; col < 3; col++) {
                     gameBoard[row][col] = 'O';
                 }
+            }
+            for (int i = 55; i < 64; i++) {
+                aiPositions.add(i);
             }
         }
     }
@@ -659,12 +702,18 @@ public class Main {
                     gameBoard[row][col] = 'X';
                 }
             }
+            for (int i = 64; i < 73; i++) {
+                playerPositions.add(i);
+            }
         }
         if (winnerOfGridEight.equals("AI")) {
             for (int row = 8; row < 11; row++) {
                 for (int col = 4; col < 7; col++) {
                     gameBoard[row][col] = 'O';
                 }
+            }
+            for (int i = 64; i < 73; i++) {
+                aiPositions.add(i);
             }
         }
     }
@@ -688,12 +737,18 @@ public class Main {
                     gameBoard[row][col] = 'X';
                 }
             }
+            for (int i = 73; i < 82; i++) {
+                playerPositions.add(i);
+            }
         }
         if (winnerOfGridNine.equals("AI")) {
             for (int row = 8; row < 11; row++) {
                 for (int col = 8; col < 11; col++) {
                     gameBoard[row][col] = 'O';
                 }
+            }
+            for (int i = 73; i < 82; i++) {
+                aiPositions.add(i);
             }
         }
     }
