@@ -125,193 +125,193 @@ public class Main {
                 gameBoard[2][6] = symbol;
                 break;
             case 19:
-                gameBoard[0][9] = symbol;
+                gameBoard[0][8] = symbol;
                 break;
             case 20:
-                gameBoard[0][10] = symbol;
+                gameBoard[0][9] = symbol;
                 break;
             case 21:
-                gameBoard[0][11] = symbol;
+                gameBoard[0][10] = symbol;
                 break;
             case 22:
-                gameBoard[1][9] = symbol;
+                gameBoard[1][8] = symbol;
                 break;
             case 23:
-                gameBoard[1][10] = symbol;
+                gameBoard[1][9] = symbol;
                 break;
             case 24:
-                gameBoard[1][11] = symbol;
+                gameBoard[1][10] = symbol;
                 break;
             case 25:
-                gameBoard[2][9] = symbol;
+                gameBoard[2][8] = symbol;
                 break;
             case 26:
-                gameBoard[2][10] = symbol;
+                gameBoard[2][9] = symbol;
                 break;
             case 27:
-                gameBoard[2][11] = symbol;
+                gameBoard[2][10] = symbol;
                 break;
             case 28:
-                gameBoard[5][0] = symbol;
+                gameBoard[4][0] = symbol;
                 break;
             case 29:
-                gameBoard[5][1] = symbol;
+                gameBoard[4][1] = symbol;
                 break;
             case 30:
-                gameBoard[5][2] = symbol;
+                gameBoard[4][2] = symbol;
                 break;
             case 31:
-                gameBoard[6][0] = symbol;
+                gameBoard[5][0] = symbol;
                 break;
             case 32:
-                gameBoard[6][1] = symbol;
+                gameBoard[5][1] = symbol;
                 break;
             case 33:
-                gameBoard[6][2] = symbol;
+                gameBoard[5][2] = symbol;
                 break;
             case 34:
-                gameBoard[7][0] = symbol;
+                gameBoard[6][0] = symbol;
                 break;
             case 35:
-                gameBoard[7][1] = symbol;
+                gameBoard[6][1] = symbol;
                 break;
             case 36:
-                gameBoard[7][2] = symbol;
+                gameBoard[6][2] = symbol;
                 break;
             case 37:
-                gameBoard[5][4] = symbol;
+                gameBoard[4][4] = symbol;
                 break;
             case 38:
-                gameBoard[5][5] = symbol;
+                gameBoard[4][5] = symbol;
                 break;
             case 39:
-                gameBoard[5][6] = symbol;
+                gameBoard[4][6] = symbol;
                 break;
             case 40:
-                gameBoard[6][4] = symbol;
+                gameBoard[5][4] = symbol;
                 break;
             case 41:
-                gameBoard[6][5] = symbol;
+                gameBoard[5][5] = symbol;
                 break;
             case 42:
-                gameBoard[6][6] = symbol;
+                gameBoard[5][6] = symbol;
                 break;
             case 43:
-                gameBoard[7][4] = symbol;
+                gameBoard[6][4] = symbol;
                 break;
             case 44:
-                gameBoard[7][5] = symbol;
+                gameBoard[6][5] = symbol;
                 break;
             case 45:
-                gameBoard[7][6] = symbol;
+                gameBoard[6][6] = symbol;
                 break;
             case 46:
-                gameBoard[5][9] = symbol;
+                gameBoard[4][8] = symbol;
                 break;
             case 47:
-                gameBoard[5][10] = symbol;
+                gameBoard[4][9] = symbol;
                 break;
             case 48:
-                gameBoard[5][11] = symbol;
+                gameBoard[4][10] = symbol;
                 break;
             case 49:
-                gameBoard[6][9] = symbol;
+                gameBoard[5][8] = symbol;
                 break;
             case 50:
-                gameBoard[6][10] = symbol;
+                gameBoard[5][9] = symbol;
                 break;
             case 51:
-                gameBoard[6][11] = symbol;
+                gameBoard[5][10] = symbol;
                 break;
             case 52:
-                gameBoard[7][9] = symbol;
+                gameBoard[6][8] = symbol;
                 break;
             case 53:
-                gameBoard[7][10] = symbol;
+                gameBoard[6][9] = symbol;
                 break;
             case 54:
-                gameBoard[7][11] = symbol;
+                gameBoard[6][10] = symbol;
                 break;
             case 55:
-                gameBoard[9][0] = symbol;
+                gameBoard[8][0] = symbol;
                 break;
             case 56:
-                gameBoard[9][1] = symbol;
+                gameBoard[8][1] = symbol;
                 break;
             case 57:
-                gameBoard[9][2] = symbol;
+                gameBoard[8][2] = symbol;
                 break;
             case 58:
-                gameBoard[10][0] = symbol;
+                gameBoard[9][0] = symbol;
                 break;
             case 59:
-                gameBoard[10][1] = symbol;
+                gameBoard[9][1] = symbol;
                 break;
             case 60:
-                gameBoard[10][2] = symbol;
+                gameBoard[9][2] = symbol;
                 break;
             case 61:
-                gameBoard[11][0] = symbol;
+                gameBoard[10][0] = symbol;
                 break;
             case 62:
-                gameBoard[11][1] = symbol;
+                gameBoard[10][1] = symbol;
                 break;
             case 63:
-                gameBoard[11][2] = symbol;
+                gameBoard[10][2] = symbol;
                 break;
             case 64:
-                gameBoard[9][4] = symbol;
+                gameBoard[8][4] = symbol;
                 break;
             case 65:
-                gameBoard[9][5] = symbol;
+                gameBoard[8][5] = symbol;
                 break;
             case 66:
-                gameBoard[9][6] = symbol;
+                gameBoard[8][6] = symbol;
                 break;
             case 67:
-                gameBoard[10][4] = symbol;
+                gameBoard[9][4] = symbol;
                 break;
             case 68:
-                gameBoard[10][5] = symbol;
+                gameBoard[9][5] = symbol;
                 break;
             case 69:
-                gameBoard[10][6] = symbol;
+                gameBoard[9][6] = symbol;
                 break;
             case 70:
-                gameBoard[11][4] = symbol;
+                gameBoard[10][4] = symbol;
                 break;
             case 71:
-                gameBoard[11][5] = symbol;
+                gameBoard[10][5] = symbol;
                 break;
             case 72:
-                gameBoard[11][6] = symbol;
+                gameBoard[10][6] = symbol;
                 break;
             case 73:
-                gameBoard[9][9] = symbol;
+                gameBoard[8][8] = symbol;
                 break;
             case 74:
-                gameBoard[9][10] = symbol;
+                gameBoard[8][9] = symbol;
                 break;
             case 75:
-                gameBoard[9][11] = symbol;
+                gameBoard[8][10] = symbol;
                 break;
             case 76:
-                gameBoard[10][9] = symbol;
+                gameBoard[9][8] = symbol;
                 break;
             case 77:
-                gameBoard[10][10] = symbol;
+                gameBoard[9][9] = symbol;
                 break;
             case 78:
-                gameBoard[10][11] = symbol;
+                gameBoard[9][10] = symbol;
                 break;
             case 79:
-                gameBoard[11][9] = symbol;
+                gameBoard[10][8] = symbol;
                 break;
             case 80:
-                gameBoard[11][10] = symbol;
+                gameBoard[10][9] = symbol;
                 break;
             case 81:
-                gameBoard[11][11] = symbol;
+                gameBoard[10][10] = symbol;
                 break;
             default:
                 break;
