@@ -146,6 +146,7 @@ public class Main {
             placement(gameBoard, playerPosition, "Player");
             printingGameBoard(gameBoard);
             checkingAllGrids(gameBoard);
+            //System.out.println(playerPositions);
             System.out.println("The AI is now thinking ");
             System.out.println();
 //            String result = hasPlayerTakenGridOne();
@@ -436,7 +437,7 @@ public class Main {
         }
     }
 
-    public static String gridOneTakenOVer() {
+    public static String whoTookGridOne() {
          for (List<Integer> integers : gridOne) {
              if (playerPositions.containsAll(integers)) {
                  return "Player";
@@ -447,8 +448,8 @@ public class Main {
         return "";
     }
 
-    public static void changingOfGridOne(char[][] gameBoard) {
-        String winnerOfGridOne = gridOneTakenOVer();
+    public static void resettingGridOne(char[][] gameBoard) {
+        String winnerOfGridOne = whoTookGridOne();
         if (winnerOfGridOne.equals("Player")) {
             for (int row = 0; row < 3; row++) {
                 for (int col = 0; col < 3; col++) {
@@ -465,7 +466,247 @@ public class Main {
         }
     }
 
+    public static String whoTookGridTwo() {
+        for (List<Integer> integers : gridTwo) {
+            if (playerPositions.containsAll(integers)) {
+                return "Player";
+            } else if (aiPositions.containsAll(integers)) {
+                return "AI";
+            }
+        }
+        return "";
+    }
+
+    public static void resettingGridTwo(char[][] gameBoard) {
+        String winnerOfGridTwo = whoTookGridTwo();
+        if (winnerOfGridTwo.equals("Player")) {
+            for (int row = 0; row < 3; row++) {
+                for (int col = 4; col < 7; col++) {
+                    gameBoard[row][col] = 'X';
+                }
+            }
+        }
+        if (winnerOfGridTwo.equals("AI")) {
+            for (int row = 0; row < 3; row++) {
+                for (int col = 4; col < 7; col++) {
+                    gameBoard[row][col] = 'O';
+                }
+            }
+        }
+    }
+
+    public static String whoTookGridThree() {
+        for (List<Integer> integers : gridThree) {
+            if (playerPositions.containsAll(integers)) {
+                return "Player";
+            } else if (aiPositions.containsAll(integers)) {
+                return "AI";
+            }
+        }
+        return "";
+    }
+
+    public static void resettingGridThree(char[][] gameBoard) {
+        String winnerOfGridThree = whoTookGridThree();
+        if (winnerOfGridThree.equals("Player")) {
+            for (int row = 0; row < 3; row++) {
+                for (int col = 8; col < 11; col++) {
+                    gameBoard[row][col] = 'X';
+                }
+            }
+        }
+        if (winnerOfGridThree.equals("AI")) {
+            for (int row = 0; row < 3; row++) {
+                for (int col = 8; col < 11; col++) {
+                    gameBoard[row][col] = 'O';
+                }
+            }
+        }
+    }
+
+    public static String whoTookGridFour() {
+        for (List<Integer> integers : gridFour) {
+            if (playerPositions.containsAll(integers)) {
+                return "Player";
+            } else if (aiPositions.containsAll(integers)) {
+                return "AI";
+            }
+        }
+        return "";
+    }
+
+    public static void resettingGridFour(char[][] gameBoard) {
+        String winnerOfGridFour = whoTookGridFour();
+        if (winnerOfGridFour.equals("Player")) {
+            for (int row = 4; row < 7; row++) {
+                for (int col = 0; col < 3; col++) {
+                    gameBoard[row][col] = 'X';
+                }
+            }
+        }
+        if (winnerOfGridFour.equals("AI")) {
+            for (int row = 4; row < 7; row++) {
+                for (int col = 0; col < 3; col++) {
+                    gameBoard[row][col] = 'O';
+                }
+            }
+        }
+    }
+
+    public static String whoTookGridFive() {
+        for (List<Integer> integers : gridFive) {
+            if (playerPositions.containsAll(integers)) {
+                return "Player";
+            } else if (aiPositions.containsAll(integers)) {
+                return "AI";
+            }
+        }
+        return "";
+    }
+
+    public static void resettingGridFive(char[][] gameBoard) {
+        String winnerOfGridFive = whoTookGridFive();
+        if (winnerOfGridFive.equals("Player")) {
+            for (int row = 4; row < 7; row++) {
+                for (int col = 4; col < 7; col++) {
+                    gameBoard[row][col] = 'X';
+                }
+            }
+        }
+        if (winnerOfGridFive.equals("AI")) {
+            for (int row = 4; row < 7; row++) {
+                for (int col = 4; col < 7; col++) {
+                    gameBoard[row][col] = 'O';
+                }
+            }
+        }
+    }
+
+    public static String whoTookGridSix() {
+        for (List<Integer> integers : gridSix) {
+            if (playerPositions.containsAll(integers)) {
+                return "Player";
+            } else if (aiPositions.containsAll(integers)) {
+                return "AI";
+            }
+        }
+        return "";
+    }
+
+    public static void resettingGridSix(char[][] gameBoard) {
+        String winnerOfGridSix = whoTookGridSix();
+        if (winnerOfGridSix.equals("Player")) {
+            for (int row = 4; row < 7; row++) {
+                for (int col = 8; col < 11; col++) {
+                    gameBoard[row][col] = 'X';
+                }
+            }
+        }
+        if (winnerOfGridSix.equals("AI")) {
+            for (int row = 4; row < 7; row++) {
+                for (int col = 8; col < 11; col++) {
+                    gameBoard[row][col] = 'O';
+                }
+            }
+        }
+    }
+
+    public static String whoTookGridSeven() {
+        for (List<Integer> integers : gridSeven) {
+            if (playerPositions.containsAll(integers)) {
+                return "Player";
+            } else if (aiPositions.containsAll(integers)) {
+                return "AI";
+            }
+        }
+        return "";
+    }
+
+    public static void resettingGridSeven(char[][] gameBoard) {
+        String winnerOfGridSeven = whoTookGridSeven();
+        if (winnerOfGridSeven.equals("Player")) {
+            for (int row = 8; row < 11; row++) {
+                for (int col = 0; col < 3; col++) {
+                    gameBoard[row][col] = 'X';
+                }
+            }
+        }
+        if (winnerOfGridSeven.equals("AI")) {
+            for (int row = 8; row < 11; row++) {
+                for (int col = 0; col < 3; col++) {
+                    gameBoard[row][col] = 'O';
+                }
+            }
+        }
+    }
+
+    public static String whoTookGridEight() {
+        for (List<Integer> integers : gridEight) {
+            if (playerPositions.containsAll(integers)) {
+                return "Player";
+            } else if (aiPositions.containsAll(integers)) {
+                return "AI";
+            }
+        }
+        return "";
+    }
+
+    public static void resettingGridEight(char[][] gameBoard) {
+        String winnerOfGridEight = whoTookGridEight();
+        if (winnerOfGridEight.equals("Player")) {
+            for (int row = 8; row < 11; row++) {
+                for (int col = 4; col < 7; col++) {
+                    gameBoard[row][col] = 'X';
+                }
+            }
+        }
+        if (winnerOfGridEight.equals("AI")) {
+            for (int row = 8; row < 11; row++) {
+                for (int col = 4; col < 7; col++) {
+                    gameBoard[row][col] = 'O';
+                }
+            }
+        }
+    }
+
+    public static String whoTookGridNine() {
+        for (List<Integer> integers : gridNine) {
+            if (playerPositions.containsAll(integers)) {
+                return "Player";
+            } else if (aiPositions.containsAll(integers)) {
+                return "AI";
+            }
+        }
+        return "";
+    }
+
+    public static void resettingGridNine(char[][] gameBoard) {
+        String winnerOfGridNine = whoTookGridNine();
+        if (winnerOfGridNine.equals("Player")) {
+            for (int row = 8; row < 11; row++) {
+                for (int col = 8; col < 11; col++) {
+                    gameBoard[row][col] = 'X';
+                }
+            }
+        }
+        if (winnerOfGridNine.equals("AI")) {
+            for (int row = 8; row < 11; row++) {
+                for (int col = 8; col < 11; col++) {
+                    gameBoard[row][col] = 'O';
+                }
+            }
+        }
+    }
+
     public static void checkingAllGrids(char[][] gameBoard) {
-        changingOfGridOne(gameBoard);
+        resettingGridOne(gameBoard);
+        resettingGridTwo(gameBoard);
+        resettingGridThree(gameBoard);
+        resettingGridFour(gameBoard);
+        resettingGridFive(gameBoard);
+        resettingGridSix(gameBoard);
+        resettingGridSeven(gameBoard);
+        resettingGridEight(gameBoard);
+        resettingGridNine(gameBoard);
     }
 }
