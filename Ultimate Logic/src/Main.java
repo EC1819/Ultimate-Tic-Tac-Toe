@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
@@ -39,11 +40,26 @@ public class Main {
         printingGameBoard(gameBoard);
 
         Scanner scanner = new Scanner(System.in);
+        Random random = new Random();
         while (true) {
             System.out.println("Please choose a spot to place an X (1-81)");
             int playerPosition = scanner.nextInt();
+            while(playerPositions.contains(playerPosition) || aiPositions.contains(playerPosition)) {
+                System.out.println("Spot is already taken. Please choose another position");
+                playerPosition = scanner.nextInt();
+            }
             placement(gameBoard, playerPosition, "Player");
             printingGameBoard(gameBoard);
+            System.out.println("The AI is now thinking ");
+            System.out.println();
+
+            int aiPosition = random.nextInt(81)+1;
+            while(playerPositions.contains(aiPosition) || aiPositions.contains(aiPosition)) {
+                aiPosition = random.nextInt(81)+1;
+            }
+            placement(gameBoard, aiPosition, "Other");
+            printingGameBoard(gameBoard);
+
 
         }
 
