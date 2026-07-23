@@ -168,15 +168,16 @@ public class Main {
             placement(gameBoard, playerPosition, "Player");
             checkingAllGrids(gameBoard);
             printingGameBoard(gameBoard);
-            System.out.println("The AI is now thinking ");
-            System.out.println();
             String result = winCondition();
             if (!result.isEmpty()) {
                 System.out.println(result);
                 break;
             }
 
-            List<Integer>  forcedChoices = cpuForceMovement(playerPosition);
+            System.out.println("The AI is now thinking ");
+            System.out.println();
+
+            List<Integer> forcedChoices = cpuForceMovement(playerPosition);
             int randomIndex = random.nextInt(forcedChoices.size());
             int aiPosition = forcedChoices.get(randomIndex);
             while(playerPositions.contains(aiPosition) || aiPositions.contains(aiPosition)) {
@@ -193,6 +194,8 @@ public class Main {
             }
             String playerChoices = playerForceMovement(aiPosition);
             System.out.println(playerChoices);
+            List<Integer> forcedPlayerSpots = playerChoices(aiPosition);
+            System.out.println(forcedPlayerSpots);
         }
     }
 
@@ -804,6 +807,22 @@ public class Main {
             case 8, 17, 26, 35, 44, 53, 62, 71, 80 -> "You must place an X in grid Eight";
             case 9, 18, 27, 36, 45, 54, 63, 72, 81 -> "You must place an X in grid Nine";
             default -> "";
+        };
+    }
+
+    public static List<Integer> playerChoices(int position) {
+        String playerGrid = playerForceMovement(position);
+        return switch (playerGrid) {
+            case "You must place an X in grid One" -> List.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
+            case "You must place an X in grid Two" -> List.of(10, 11, 12, 13, 14, 15, 16, 17, 18);
+            case "You must place an X in grid Three" -> List.of(19, 20, 21, 22, 23, 24, 25, 26, 27);
+            case "You must place an X in grid Four" -> List.of(28, 29, 30, 31, 32, 33, 34, 35, 36);
+            case "You must place an X in grid Five" -> List.of(37, 38, 39, 40, 41, 42, 43, 44, 45);
+            case "You must place an X in grid Six" -> List.of(46, 47, 48, 49, 50, 51, 52, 53, 54);
+            case "You must place an X in grid Seven" -> List.of(55, 56, 57, 58, 59, 60, 61, 62, 63);
+            case "You must place an X in grid Eight" -> List.of(64, 65, 66, 67, 68, 69, 70, 71, 72);
+            case "You must place an X in grid Nine" -> List.of(73, 74, 75, 76, 77, 78, 79, 80, 81);
+            default -> List.of();
         };
     }
 
