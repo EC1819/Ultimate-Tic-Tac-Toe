@@ -115,7 +115,7 @@ public class Main {
 //            List.of(gridThree, gridFive, gridSeven)
 //    );
 
-    static final List<List<Integer>> falseWinConditions = List.of(
+    static final List<List<Integer>> tempWinConditions = List.of(
             List.of(1,2,3,4,5,6,7,8,9,37,38,39,40,41,42,43,44,45,73,74,75,76,77,78,79,80,81), //leftDiagonal
             List.of(19,20,21,22,23,24,25,26,27,37,38,39,40,41,42,43,44,45,55,56,57,58,59,60,61,62,63), //rightDiagonal
             List.of(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27), //topRow
@@ -842,7 +842,7 @@ public class Main {
     }
 
     public static String winCondition() {
-        for(List<Integer> integers : falseWinConditions) {
+        for(List<Integer> integers : tempWinConditions) {
             if(playerPositions.containsAll(integers)) {
                 return "Congrats you won";
             } else if (aiPositions.containsAll(integers)) {
