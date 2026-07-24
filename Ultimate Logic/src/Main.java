@@ -104,6 +104,7 @@ public class Main {
             List.of(75, 77, 79) //rightDiagonal
     );
 
+    //Trying to shorten the amount of typing by using already grids and determine the winner if either the Player or AI has already taken certain lines of grids
 //    static final List<List<List<List<Integer>>>> winConditions = List.of(
 //            List.of(gridOne, gridTwo, gridThree),
 //            List.of(gridFour, gridFive, gridSix),
@@ -155,25 +156,16 @@ public class Main {
         gameBoard[7][7] = '+';
 
         printingGameBoard(gameBoard);
-        System.out.println("Starting Player can place an X anywhere from spot (1-81)");
+        System.out.println("The Player can start by placing an X anywhere from spots (1-81)");
 
         Scanner scanner = new Scanner(System.in);
         Random random = new Random();
-        while (true) {
-            int playerPosition = scanner.nextInt();
-            while(playerPositions.contains(playerPosition) || aiPositions.contains(playerPosition)) {
-                System.out.println("Spot is already taken. Please choose another position");
-                playerPosition = scanner.nextInt();
-            }
-            placement(gameBoard, playerPosition, "Player");
-            checkingAllGrids(gameBoard);
-            printingGameBoard(gameBoard);
-            String result = winCondition();
-            if (!result.isEmpty()) {
-                System.out.println(result);
-                break;
-            }
+        int playerPosition = scanner.nextInt();
+        placement(gameBoard, playerPosition, "Player");
+        checkingAllGrids(gameBoard);
+        printingGameBoard(gameBoard);
 
+        while (true) {
             System.out.println("The AI is now thinking ");
             System.out.println();
 
@@ -187,7 +179,7 @@ public class Main {
             placement(gameBoard, aiPosition, "Other");
             checkingAllGrids(gameBoard);
             printingGameBoard(gameBoard);
-            result = winCondition();
+            String result = winCondition();
             if (!result.isEmpty()) {
                 System.out.println(result);
                 break;
@@ -196,6 +188,26 @@ public class Main {
             System.out.println(playerChoices);
             List<Integer> forcedPlayerSpots = playerChoices(aiPosition);
             System.out.println(forcedPlayerSpots);
+
+            //Player movement
+            playerPosition = scanner.nextInt();
+            while(playerPositions.contains(playerPosition) || aiPositions.contains(playerPosition)) {
+                System.out.println("Spot is already taken. Please choose another position");
+                playerPosition = scanner.nextInt();
+            }
+            if(!forcedPlayerSpots.contains(playerPosition)) {
+                System.out.println("You have not chosen a spot in the correct grid.");
+                System.out.println("Please choose again from the specified spots");
+                playerPosition = scanner.nextInt();
+            }
+            placement(gameBoard, playerPosition, "Player");
+            checkingAllGrids(gameBoard);
+            printingGameBoard(gameBoard);
+            result = winCondition();
+            if (!result.isEmpty()) {
+                System.out.println(result);
+                break;
+            }
         }
     }
 
@@ -822,7 +834,10 @@ public class Main {
             case "You must place an X in grid Seven" -> List.of(55, 56, 57, 58, 59, 60, 61, 62, 63);
             case "You must place an X in grid Eight" -> List.of(64, 65, 66, 67, 68, 69, 70, 71, 72);
             case "You must place an X in grid Nine" -> List.of(73, 74, 75, 76, 77, 78, 79, 80, 81);
-            default -> List.of();
+            default -> List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+                    21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40,
+                    41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60,
+                    61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81);
         };
     }
 
@@ -853,5 +868,21 @@ public class Main {
             return "Draw";
         }
         return "";
+    }
+
+    public static boolean isGridOneFull(char[][] gameBoard) {
+
+        for (int row = 0; row < 3; row++) {
+            for (int col = 0; col < 3; col++) {
+                if(gameBoard[row][col] != ' '){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public static void canPlaceAnywhere(char[][] gameBoard) {
+        boolean isGridFull = isGridOneFull(gameBoard);
     }
 }
