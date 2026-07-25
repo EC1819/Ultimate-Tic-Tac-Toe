@@ -167,15 +167,13 @@ public class Main {
 
         while (true) {
             System.out.println("The AI is now thinking ");
-            System.out.println();
 
-            List<Integer> forcedChoices = cpuForceMovement(playerPosition);
-            int randomIndex = random.nextInt(forcedChoices.size());
-            int aiPosition = forcedChoices.get(randomIndex);
-            while(playerPositions.contains(aiPosition) || aiPositions.contains(aiPosition)) {
-                randomIndex = random.nextInt(forcedChoices.size());
-                aiPosition = forcedChoices.get(randomIndex);
+            List<Integer> forcedChoices = allowedSpots(gameBoard, playerPosition);
+            if (forcedChoices.isEmpty()) {
+                System.out.println("Draw");
+                break;
             }
+            int aiPosition = forcedChoices.get(random.nextInt(forcedChoices.size()));
             placement(gameBoard, aiPosition, "Other");
             checkingAllGrids(gameBoard);
             printingGameBoard(gameBoard);
@@ -184,20 +182,33 @@ public class Main {
                 System.out.println(result);
                 break;
             }
-            String playerChoices = playerForceMovement(aiPosition);
-            System.out.println(playerChoices);
-            List<Integer> forcedPlayerSpots = playerChoices(aiPosition);
-            System.out.println(forcedPlayerSpots);
+
+//            String playerChoices = playerForceMovement(aiPosition);
+//            System.out.println(playerChoices);
+//            List<Integer> forcedPlayerSpots = allowedSpots(gameBoard, aiPosition);
+//            System.out.println(forcedPlayerSpots);
 
             //Player movement
-            playerPosition = scanner.nextInt();
-            while(playerPositions.contains(playerPosition) || aiPositions.contains(playerPosition)) {
-                System.out.println("Spot is already taken. Please choose another position");
-                playerPosition = scanner.nextInt();
+            int targetGrid = forcedGrid(aiPosition);
+            List<Integer> playerChoices = allowedSpots(gameBoard, aiPosition);
+            if (playerChoices.isEmpty()) {
+                System.out.println("Draw");
+                break;
             }
-            if(!forcedPlayerSpots.contains(playerPosition)) {
-                System.out.println("You have not chosen a spot in the correct grid.");
-                System.out.println("Please choose again from the specified spots");
+            if (isGridFull(gameBoard, targetGrid)) {
+                System.out.println("You may place anywhere on the board");
+            } else {
+                System.out.println("You must place an X in " + targetGrid);
+            }
+            System.out.println(playerChoices);
+
+            playerPosition = scanner.nextInt();
+            while(!playerChoices.contains(playerPosition)) {
+                if (playerPositions.contains(playerPosition) || aiPositions.contains(playerPosition)) {
+                    System.out.println("Spot is already taken. Please choose another position");
+                } else {
+                    System.out.println("The spot chosen is not in the correct grid");
+                }
                 playerPosition = scanner.nextInt();
             }
             placement(gameBoard, playerPosition, "Player");
@@ -510,7 +521,7 @@ public class Main {
                 }
             }
             for (int i = 1; i < 10; i++) {
-                playerPositions.add(i);
+                aiPositions.add(i);
             }
         }
     }
@@ -805,6 +816,8 @@ public class Main {
         resettingGridSeven(gameBoard);
         resettingGridEight(gameBoard);
         resettingGridNine(gameBoard);
+        System.out.println("DEBUG playerPositions = " + playerPositions);
+        System.out.println("DEBUG aiPositions = " + aiPositions);
     }
 
     public static String playerForceMovement(int position) {
@@ -870,19 +883,84 @@ public class Main {
         return "";
     }
 
-    public static boolean isGridOneFull(char[][] gameBoard) {
+    public static boolean isGridFull(char[][] gameBoard, int gridNumber) {
+        int startRow, startCol;
+        switch(gridNumber) {
+            case 1:
+                startRow = 0; startCol = 0;
+                break;
+            case 2:
+                startRow = 0; startCol = 4;
+                break;
+            case 3:
+                startRow = 0; startCol = 8;
+                break;
+            case 4:
+                startRow = 4; startCol = 0;
+                break;
+            case 5:
+                startRow = 4; startCol = 4;
+                break;
+            case 6:
+                startRow = 4; startCol = 8;
+                break;
+            case 7:
+                startRow = 8; startCol = 0;
+                break;
+            case 8:
+                startRow = 8; startCol = 4;
+                break;
+            case 9:
+                startRow = 8; startCol = 8;
+                break;
+            default:
+                return false;
+        }
 
-        for (int row = 0; row < 3; row++) {
-            for (int col = 0; col < 3; col++) {
-                if(gameBoard[row][col] != ' '){
-                    return true;
+        for (int row = startRow; row < startRow + 3; row++) {
+            for (int col = startCol; col < startCol + 3; col++) {
+                if (gameBoard[row][col] == ' ') {
+                    return false;
                 }
             }
         }
-        return false;
+        return true;
     }
 
-    public static void canPlaceAnywhere(char[][] gameBoard) {
-        boolean isGridFull = isGridOneFull(gameBoard);
+    //Tells the user which grid they are forced to play in
+    public static int forcedGrid(int position) {
+        int relative  = ((position - 1) % 9) + 1;
+        return relative;
+    }
+
+    public static List<Integer> spotsInGrid(int gridNumber) {
+        List<Integer> spots = new ArrayList<>();
+        int base = (gridNumber - 1) * 9;
+        for (int i = 1; i <= 9; i++) {
+            spots.add(base + i);
+        }
+        return spots;
+    }
+
+    public static List<Integer> allowedSpots(char[][] gameBoard, int previousMove) {
+        int targetGrid =forcedGrid(previousMove);
+        List<Integer> candidates;
+
+        if (isGridFull(gameBoard, targetGrid)) {
+            candidates = new ArrayList<>();
+            for (int i = 1; i <= 81; i++) {
+                candidates.add(i);
+            }
+        } else {
+            candidates = new ArrayList<>(spotsInGrid(targetGrid));
+        }
+
+        List<Integer> available = new ArrayList<>();
+        for (int spot : candidates) {
+            if(!playerPositions.contains(spot) && !aiPositions.contains(spot)) {
+                available.add(spot);
+            }
+        }
+        return available;
     }
 }
