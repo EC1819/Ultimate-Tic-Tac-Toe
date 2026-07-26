@@ -106,6 +106,11 @@ public class Main {
             List.of(75, 77, 79) //rightDiagonal
     );
 
+    static final List<List<List<Integer>>> allGrids = List.of(
+            gridOne, gridTwo, gridThree, gridFour, gridFive, gridSix, gridSeven, gridEight, gridNine
+    );
+
+
     //Trying to shorten the amount of typing by using already grids and determine the winner if either the Player or AI has already taken certain lines of grids
 //    static final List<List<List<List<Integer>>>> winConditions = List.of(
 //            List.of(gridOne, gridTwo, gridThree),
@@ -493,22 +498,12 @@ public class Main {
         }
     }
 
-    public static String whoTookGridOne() {
-         for (List<Integer> integers : gridOne) {
-             if (playerPositions.containsAll(integers)) {
-                 return "Player";
-             } else if (aiPositions.containsAll(integers)) {
-                 return "AI";
-             }
-         }
-        return "";
-    }
 
     public static void resettingGridOne(char[][] gameBoard) {
         if (claimedGrids.contains(1)) {
             return;
         }
-        String winnerOfGridOne = whoTookGridOne();
+        String winnerOfGridOne = whoTookGrid(1);
         if (!winnerOfGridOne.isEmpty()) {
             claimedGrids.add(1);
         }
@@ -534,22 +529,12 @@ public class Main {
         }
     }
 
-    public static String whoTookGridTwo() {
-        for (List<Integer> integers : gridTwo) {
-            if (playerPositions.containsAll(integers)) {
-                return "Player";
-            } else if (aiPositions.containsAll(integers)) {
-                return "AI";
-            }
-        }
-        return "";
-    }
 
     public static void resettingGridTwo(char[][] gameBoard) {
         if (claimedGrids.contains(2)) {
             return;
         }
-        String winnerOfGridTwo = whoTookGridTwo();
+        String winnerOfGridTwo = whoTookGrid(2);
         if (!winnerOfGridTwo.isEmpty()) {
             claimedGrids.add(2);
         }
@@ -575,22 +560,12 @@ public class Main {
         }
     }
 
-    public static String whoTookGridThree() {
-        for (List<Integer> integers : gridThree) {
-            if (playerPositions.containsAll(integers)) {
-                return "Player";
-            } else if (aiPositions.containsAll(integers)) {
-                return "AI";
-            }
-        }
-        return "";
-    }
 
     public static void resettingGridThree(char[][] gameBoard) {
         if (claimedGrids.contains(3)) {
             return;
         }
-        String winnerOfGridThree = whoTookGridThree();
+        String winnerOfGridThree = whoTookGrid(3);
         if (!winnerOfGridThree.isEmpty()) {
             claimedGrids.add(3);
         }
@@ -616,22 +591,12 @@ public class Main {
         }
     }
 
-    public static String whoTookGridFour() {
-        for (List<Integer> integers : gridFour) {
-            if (playerPositions.containsAll(integers)) {
-                return "Player";
-            } else if (aiPositions.containsAll(integers)) {
-                return "AI";
-            }
-        }
-        return "";
-    }
 
     public static void resettingGridFour(char[][] gameBoard) {
         if (claimedGrids.contains(4)) {
             return ;
         }
-        String winnerOfGridFour = whoTookGridFour();
+        String winnerOfGridFour = whoTookGrid(4);
         if (!winnerOfGridFour.isEmpty()) {
             claimedGrids.add(4);
         }
@@ -657,22 +622,12 @@ public class Main {
         }
     }
 
-    public static String whoTookGridFive() {
-        for (List<Integer> integers : gridFive) {
-            if (playerPositions.containsAll(integers)) {
-                return "Player";
-            } else if (aiPositions.containsAll(integers)) {
-                return "AI";
-            }
-        }
-        return "";
-    }
 
     public static void resettingGridFive(char[][] gameBoard) {
         if (claimedGrids.contains(5)) {
             return;
         }
-        String winnerOfGridFive = whoTookGridFive();
+        String winnerOfGridFive = whoTookGrid(5);
         if (!winnerOfGridFive.isEmpty()) {
             claimedGrids.add(5);
         }
@@ -698,22 +653,12 @@ public class Main {
         }
     }
 
-    public static String whoTookGridSix() {
-        for (List<Integer> integers : gridSix) {
-            if (playerPositions.containsAll(integers)) {
-                return "Player";
-            } else if (aiPositions.containsAll(integers)) {
-                return "AI";
-            }
-        }
-        return "";
-    }
 
     public static void resettingGridSix(char[][] gameBoard) {
         if (claimedGrids.contains(6)) {
             return;
         }
-        String winnerOfGridSix = whoTookGridSix();
+        String winnerOfGridSix = whoTookGrid(6);
         if (!winnerOfGridSix.isEmpty()) {
             claimedGrids.add(6);
         }
@@ -739,22 +684,12 @@ public class Main {
         }
     }
 
-    public static String whoTookGridSeven() {
-        for (List<Integer> integers : gridSeven) {
-            if (playerPositions.containsAll(integers)) {
-                return "Player";
-            } else if (aiPositions.containsAll(integers)) {
-                return "AI";
-            }
-        }
-        return "";
-    }
 
     public static void resettingGridSeven(char[][] gameBoard) {
         if (claimedGrids.contains(7)) {
             return;
         }
-        String winnerOfGridSeven = whoTookGridSeven();
+        String winnerOfGridSeven = whoTookGrid(7);
         if (!winnerOfGridSeven.isEmpty()) {
             claimedGrids.add(7);
         }
@@ -780,22 +715,12 @@ public class Main {
         }
     }
 
-    public static String whoTookGridEight() {
-        for (List<Integer> integers : gridEight) {
-            if (playerPositions.containsAll(integers)) {
-                return "Player";
-            } else if (aiPositions.containsAll(integers)) {
-                return "AI";
-            }
-        }
-        return "";
-    }
 
     public static void resettingGridEight(char[][] gameBoard) {
         if (claimedGrids.contains(8)) {
             return;
         }
-        String winnerOfGridEight = whoTookGridEight();
+        String winnerOfGridEight = whoTookGrid(8);
         if (!winnerOfGridEight.isEmpty()) {
             claimedGrids.add(8);
         }
@@ -821,22 +746,12 @@ public class Main {
         }
     }
 
-    public static String whoTookGridNine() {
-        for (List<Integer> integers : gridNine) {
-            if (playerPositions.containsAll(integers)) {
-                return "Player";
-            } else if (aiPositions.containsAll(integers)) {
-                return "AI";
-            }
-        }
-        return "";
-    }
 
     public static void resettingGridNine(char[][] gameBoard) {
         if (claimedGrids.contains(9)) {
             return;
         }
-        String winnerOfGridNine = whoTookGridNine();
+        String winnerOfGridNine = whoTookGrid(9);
         if (!winnerOfGridNine.isEmpty()) {
             claimedGrids.add(9);
         }
@@ -872,6 +787,24 @@ public class Main {
         resettingGridSeven(gameBoard);
         resettingGridEight(gameBoard);
         resettingGridNine(gameBoard);
+    }
+
+    // Takes a gridNumber and looks up the winning lines and checks each one
+    public static String whoTookGrid(int gridNumber) {
+        List<List<Integer>> gridLines = getGridLines(gridNumber);
+        for (List<Integer> line : gridLines) {
+            if (playerPositions.containsAll(line)) {
+                return "Player";
+            }
+            if (aiPositions.containsAll(line)) {
+                return "AI";
+            }
+        }
+        return "";
+    }
+
+    public static List<List<Integer>> getGridLines(int gridNumber) {
+        return allGrids.get(gridNumber - 1);
     }
 
     public static String winCondition() {
