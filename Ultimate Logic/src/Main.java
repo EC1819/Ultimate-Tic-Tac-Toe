@@ -874,55 +874,6 @@ public class Main {
         resettingGridNine(gameBoard);
     }
 
-    public static String playerForceMovement(int position) {
-        return switch (position) {
-            case 1, 73, 64, 55, 46, 37, 28, 19, 10 -> "You must place an X in grid One";
-            case 2, 11, 20, 29, 38, 47, 56, 65, 74 -> "You must place an X in grid Two";
-            case 3, 12, 21, 30, 39, 48, 57, 66, 75 -> "You must place an X in grid Three";
-            case 4, 13, 22, 31, 40, 49, 58, 67, 76 -> "You must place an X in grid Four";
-            case 5, 14, 23, 32, 41, 50, 59, 68, 77 -> "You must place an X in grid Five";
-            case 6, 15, 24, 33, 42, 51, 60, 69, 78 -> "You must place an X in grid Six";
-            case 7, 16, 25, 34, 43, 52, 61, 70, 79 -> "You must place an X in grid Seven";
-            case 8, 17, 26, 35, 44, 53, 62, 71, 80 -> "You must place an X in grid Eight";
-            case 9, 18, 27, 36, 45, 54, 63, 72, 81 -> "You must place an X in grid Nine";
-            default -> "";
-        };
-    }
-
-    public static List<Integer> playerChoices(int position) {
-        String playerGrid = playerForceMovement(position);
-        return switch (playerGrid) {
-            case "You must place an X in grid One" -> List.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
-            case "You must place an X in grid Two" -> List.of(10, 11, 12, 13, 14, 15, 16, 17, 18);
-            case "You must place an X in grid Three" -> List.of(19, 20, 21, 22, 23, 24, 25, 26, 27);
-            case "You must place an X in grid Four" -> List.of(28, 29, 30, 31, 32, 33, 34, 35, 36);
-            case "You must place an X in grid Five" -> List.of(37, 38, 39, 40, 41, 42, 43, 44, 45);
-            case "You must place an X in grid Six" -> List.of(46, 47, 48, 49, 50, 51, 52, 53, 54);
-            case "You must place an X in grid Seven" -> List.of(55, 56, 57, 58, 59, 60, 61, 62, 63);
-            case "You must place an X in grid Eight" -> List.of(64, 65, 66, 67, 68, 69, 70, 71, 72);
-            case "You must place an X in grid Nine" -> List.of(73, 74, 75, 76, 77, 78, 79, 80, 81);
-            default -> List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-                    21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40,
-                    41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60,
-                    61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81);
-        };
-    }
-
-    public static List<Integer> cpuForceMovement(int position) {
-        return switch (position) {
-            case 1, 73, 64, 55, 46, 37, 28, 19, 10 -> List.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
-            case 2, 11, 20, 29, 38, 47, 56, 65, 74 -> List.of(10, 11, 12, 13, 14, 15, 16, 17, 18);
-            case 3, 12, 21, 30, 39, 48, 57, 66, 75 -> List.of(19, 20, 21, 22, 23, 24, 25, 26, 27);
-            case 4, 13, 22, 31, 40, 49, 58, 67, 76 -> List.of(28, 29, 30, 31, 32, 33, 34, 35, 36);
-            case 5, 14, 23, 32, 41, 50, 59, 68, 77 -> List.of(37, 38, 39, 40, 41, 42, 43, 44, 45);
-            case 6, 15, 24, 33, 42, 51, 60, 69, 78 -> List.of(46, 47, 48, 49, 50, 51, 52, 53, 54);
-            case 7, 16, 25, 34, 43, 52, 61, 70, 79 -> List.of(55, 56, 57, 58, 59, 60, 61, 62, 63);
-            case 8, 17, 26, 35, 44, 53, 62, 71, 80 -> List.of(64, 65, 66, 67, 68, 69, 70, 71, 72);
-            case 9, 18, 27, 36, 45, 54, 63, 72, 81 -> List.of(73, 74, 75, 76, 77, 78, 79, 80, 81);
-            default -> List.of();
-        };
-    }
-
     public static String winCondition() {
         for(List<Integer> integers : tempWinConditions) {
             if(playerPositions.containsAll(integers)) {
