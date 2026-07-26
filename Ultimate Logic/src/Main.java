@@ -10,6 +10,8 @@ public class Main {
     // Tracks the spots in which the AI/CPu has taken on the board
     static ArrayList<Integer> aiPositions =new ArrayList<>();
 
+    static ArrayList<Integer> claimedGrids = new ArrayList<>();
+
     static final List<List<Integer>> gridOne = List.of(
             List.of(1, 2, 3), //topRow
             List.of(4, 5, 6), //middleRow
@@ -503,7 +505,13 @@ public class Main {
     }
 
     public static void resettingGridOne(char[][] gameBoard) {
+        if (claimedGrids.contains(1)) {
+            return;
+        }
         String winnerOfGridOne = whoTookGridOne();
+        if (!winnerOfGridOne.isEmpty()) {
+            claimedGrids.add(1);
+        }
         if (winnerOfGridOne.equals("Player")) {
             for (int row = 0; row < 3; row++) {
                 for (int col = 0; col < 3; col++) {
@@ -538,7 +546,13 @@ public class Main {
     }
 
     public static void resettingGridTwo(char[][] gameBoard) {
+        if (claimedGrids.contains(2)) {
+            return;
+        }
         String winnerOfGridTwo = whoTookGridTwo();
+        if (!winnerOfGridTwo.isEmpty()) {
+            claimedGrids.add(2);
+        }
         if (winnerOfGridTwo.equals("Player")) {
             for (int row = 0; row < 3; row++) {
                 for (int col = 4; col < 7; col++) {
@@ -573,7 +587,13 @@ public class Main {
     }
 
     public static void resettingGridThree(char[][] gameBoard) {
+        if (claimedGrids.contains(3)) {
+            return;
+        }
         String winnerOfGridThree = whoTookGridThree();
+        if (!winnerOfGridThree.isEmpty()) {
+            claimedGrids.add(3);
+        }
         if (winnerOfGridThree.equals("Player")) {
             for (int row = 0; row < 3; row++) {
                 for (int col = 8; col < 11; col++) {
@@ -608,7 +628,13 @@ public class Main {
     }
 
     public static void resettingGridFour(char[][] gameBoard) {
+        if (claimedGrids.contains(4)) {
+            return ;
+        }
         String winnerOfGridFour = whoTookGridFour();
+        if (!winnerOfGridFour.isEmpty()) {
+            claimedGrids.add(4);
+        }
         if (winnerOfGridFour.equals("Player")) {
             for (int row = 4; row < 7; row++) {
                 for (int col = 0; col < 3; col++) {
@@ -643,7 +669,13 @@ public class Main {
     }
 
     public static void resettingGridFive(char[][] gameBoard) {
+        if (claimedGrids.contains(5)) {
+            return;
+        }
         String winnerOfGridFive = whoTookGridFive();
+        if (!winnerOfGridFive.isEmpty()) {
+            claimedGrids.add(5);
+        }
         if (winnerOfGridFive.equals("Player")) {
             for (int row = 4; row < 7; row++) {
                 for (int col = 4; col < 7; col++) {
@@ -678,7 +710,13 @@ public class Main {
     }
 
     public static void resettingGridSix(char[][] gameBoard) {
+        if (claimedGrids.contains(6)) {
+            return;
+        }
         String winnerOfGridSix = whoTookGridSix();
+        if (!winnerOfGridSix.isEmpty()) {
+            claimedGrids.add(6);
+        }
         if (winnerOfGridSix.equals("Player")) {
             for (int row = 4; row < 7; row++) {
                 for (int col = 8; col < 11; col++) {
@@ -713,7 +751,13 @@ public class Main {
     }
 
     public static void resettingGridSeven(char[][] gameBoard) {
+        if (claimedGrids.contains(7)) {
+            return;
+        }
         String winnerOfGridSeven = whoTookGridSeven();
+        if (!winnerOfGridSeven.isEmpty()) {
+            claimedGrids.add(7);
+        }
         if (winnerOfGridSeven.equals("Player")) {
             for (int row = 8; row < 11; row++) {
                 for (int col = 0; col < 3; col++) {
@@ -748,7 +792,13 @@ public class Main {
     }
 
     public static void resettingGridEight(char[][] gameBoard) {
+        if (claimedGrids.contains(8)) {
+            return;
+        }
         String winnerOfGridEight = whoTookGridEight();
+        if (!winnerOfGridEight.isEmpty()) {
+            claimedGrids.add(8);
+        }
         if (winnerOfGridEight.equals("Player")) {
             for (int row = 8; row < 11; row++) {
                 for (int col = 4; col < 7; col++) {
@@ -783,7 +833,13 @@ public class Main {
     }
 
     public static void resettingGridNine(char[][] gameBoard) {
+        if (claimedGrids.contains(9)) {
+            return;
+        }
         String winnerOfGridNine = whoTookGridNine();
+        if (!winnerOfGridNine.isEmpty()) {
+            claimedGrids.add(9);
+        }
         if (winnerOfGridNine.equals("Player")) {
             for (int row = 8; row < 11; row++) {
                 for (int col = 8; col < 11; col++) {
@@ -816,8 +872,6 @@ public class Main {
         resettingGridSeven(gameBoard);
         resettingGridEight(gameBoard);
         resettingGridNine(gameBoard);
-        System.out.println("DEBUG playerPositions = " + playerPositions);
-        System.out.println("DEBUG aiPositions = " + aiPositions);
     }
 
     public static String playerForceMovement(int position) {
