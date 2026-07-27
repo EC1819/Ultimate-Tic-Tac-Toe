@@ -34,18 +34,6 @@ public class Main {
         }
     }
 
-
-    static final List<List<Integer>> tempWinConditions = List.of(
-            List.of(1,2,3,4,5,6,7,8,9,37,38,39,40,41,42,43,44,45,73,74,75,76,77,78,79,80,81), //leftDiagonal
-            List.of(19,20,21,22,23,24,25,26,27,37,38,39,40,41,42,43,44,45,55,56,57,58,59,60,61,62,63), //rightDiagonal
-            List.of(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27), //topRow
-            List.of(28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54), //middleRow
-            List.of(55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81), //bottomRow
-            List.of(1,2,3,4,5,6,7,8,9,28,29,30,31,32,33,34,35,36,55,56,57,58,59,60,61,62,63), //leftColumn
-            List.of(10,11,12,13,14,15,16,17,18,37,38,39,40,41,42,43,44,45,64,65,66,67,68,69,70,71,72), //middleColumn
-            List.of(19,20,21,22,23,24,25,26,27,46,47,48,49,50,51,52,53,54,73,74,75,76,77,78,79,80,81) //rightColumn
-    );
-
     public static void main(String[] args) {
 
         //Creating a fixed game board size
@@ -102,10 +90,6 @@ public class Main {
                 break;
             }
 
-//            String playerChoices = playerForceMovement(aiPosition);
-//            System.out.println(playerChoices);
-//            List<Integer> forcedPlayerSpots = allowedSpots(gameBoard, aiPosition);
-//            System.out.println(forcedPlayerSpots);
 
             //Player movement
             int targetGrid = forcedGrid(aiPosition);
@@ -232,10 +216,10 @@ public class Main {
     }
 
     public static String winCondition() {
-        for(List<Integer> integers : tempWinConditions) {
-            if(playerPositions.containsAll(integers)) {
+        for(List<Integer> metaLine : gridPattern) {
+            if(allWonBy(metaLine, "Player")) {
                 return "Congrats you won";
-            } else if (aiPositions.containsAll(integers)) {
+            } else if (allWonBy(metaLine, "AI")) {
                 return "The A.I wins";
             }
         }
@@ -243,6 +227,19 @@ public class Main {
             return "Draw";
         }
         return "";
+    }
+
+    //Checking if the Player or AI has won all the grids to win the game
+    public static boolean allWonBy(List<Integer> gridNumbers, String player) {
+        for (int gridNumber : gridNumbers) {
+            if(!claimedGrids.contains(gridNumber)) {
+                return false;
+            }
+            if (!whoTookGrid(gridNumber).equals(player)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public static boolean isGridFull(char[][] gameBoard, int gridNumber) {
@@ -291,8 +288,7 @@ public class Main {
 
     //Tells the user which grid they are forced to play in
     public static int forcedGrid(int position) {
-        int relative  = ((position - 1) % 9) + 1;
-        return relative;
+        return ((position - 1) % 9) + 1;
     }
 
     public static List<Integer> spotsInGrid(int gridNumber) {
