@@ -12,116 +12,28 @@ public class Main {
 
     static ArrayList<Integer> claimedGrids = new ArrayList<>();
 
-    static final List<List<Integer>> gridOne = List.of(
-            List.of(1, 2, 3), //topRow
-            List.of(4, 5, 6), //middleRow
-            List.of(7, 8, 9), //bottomRow
-            List.of(1, 4, 7), //leftColumn
-            List.of(2, 5, 8), //middleColumn
-            List.of(3, 6, 9), //rightColumn
-            List.of(1, 5, 9), //leftDiagonal
-            List.of(3, 5, 7) //rightDiagonal
+    static final List<List<Integer>> gridPattern = List.of(
+            List.of(1, 2, 3), List.of(4, 5, 6), List.of(7, 8, 9),
+            List.of(1, 4, 7), List.of(2, 5, 8), List.of(3, 6, 9),
+            List.of(1, 5, 9), List.of(3, 5, 7)
     );
 
-    static final List<List<Integer>> gridTwo = List.of(
-            List.of(10, 11, 12), //topRow
-            List.of(13, 14, 15), //middleRow
-            List.of(16, 17, 18), //bottomRow
-            List.of(10, 13, 16), //leftColumn
-            List.of(11, 14, 17), //middleColumn
-            List.of(12, 15, 18), //rightColumn
-            List.of(10, 14, 18), //leftDiagonal
-            List.of(12, 14, 16) //rightDiagonal
-    );
+    static final List<List<List<Integer>>> allGrids = new ArrayList<>();
+    static {
+        for (int gridNumber = 1; gridNumber <= 9; gridNumber++) {
+            int offset = (gridNumber - 1) * 9;
+            List<List<Integer>> shiftedGrid = new ArrayList<>();
+            for (List<Integer> line : gridPattern) {
+                List<Integer> shiftedLine = new ArrayList<>();
+                for (int spot : line) {
+                    shiftedLine.add(spot + offset);
+                }
+                shiftedGrid.add(shiftedLine);
+            }
+            allGrids.add(shiftedGrid);
+        }
+    }
 
-    static final List<List<Integer>> gridThree = List.of(
-            List.of(19, 20, 21), //topRow
-            List.of(22, 23, 24), //middleRow
-            List.of(25, 26, 27), //bottomRow
-            List.of(19, 22, 25), //leftColumn
-            List.of(20, 23, 26), //middleColumn
-            List.of(21, 24, 27), //rightColumn
-            List.of(19, 23, 27), //leftDiagonal
-            List.of(21, 23, 25) //rightDiagonal
-    );
-
-    static final List<List<Integer>> gridFour = List.of(
-            List.of(28, 29, 30), //topRow
-            List.of(31, 32, 33), //middleRow
-            List.of(34, 35, 36), //bottomRow
-            List.of(28, 31, 34), //leftColumn
-            List.of(29, 32, 35), //middleColumn
-            List.of(30, 33, 36), //rightColumn
-            List.of(28, 32, 36), //leftDiagonal
-            List.of(30, 32, 34) //rightDiagonal
-    );
-    static final List<List<Integer>> gridFive = List.of(
-            List.of(37, 38, 39), //topRow
-            List.of(40, 41, 42), //middleRow
-            List.of(43, 44, 45), //bottomRow
-            List.of(37, 40, 43), //leftColumn
-            List.of(38, 41, 44), //middleColumn
-            List.of(39, 42, 45), //rightColumn
-            List.of(37, 41, 45), //leftDiagonal
-            List.of(39, 41, 43) //rightDiagonal
-    );
-    static final List<List<Integer>> gridSix = List.of(
-            List.of(46, 47, 48), //topRow
-            List.of(49, 50, 51), //middleRow
-            List.of(52, 53, 54), //bottomRow
-            List.of(46, 49, 52), //leftColumn
-            List.of(47, 50, 53), //middleColumn
-            List.of(48, 51, 54), //rightColumn
-            List.of(46, 50, 54), //leftDiagonal
-            List.of(48, 50, 52) //rightDiagonal
-    );
-    static final List<List<Integer>> gridSeven = List.of(
-            List.of(55, 56, 57), //topRow
-            List.of(58, 59, 60), //middleRow
-            List.of(61, 62, 63), //bottomRow
-            List.of(55, 58, 61), //leftColumn
-            List.of(56, 59, 62), //middleColumn
-            List.of(57, 60, 63), //rightColumn
-            List.of(55, 59, 63), //leftDiagonal
-            List.of(57, 59, 61) //rightDiagonal
-    );
-    static final List<List<Integer>> gridEight = List.of(
-            List.of(64, 65, 66), //topRow
-            List.of(67, 68, 69), //middleRow
-            List.of(70, 71, 72), //bottomRow
-            List.of(64, 67, 70), //leftColumn
-            List.of(65, 68, 71), //middleColumn
-            List.of(66, 69, 72), //rightColumn
-            List.of(64, 68, 72), //leftDiagonal
-            List.of(66, 68, 70) //rightDiagonal
-    );
-    static final List<List<Integer>> gridNine = List.of(
-            List.of(73, 74, 75), //topRow
-            List.of(76, 77, 78), //middleRow
-            List.of(79, 80, 81), //bottomRow
-            List.of(73, 76, 79), //leftColumn
-            List.of(74, 77, 80), //middleColumn
-            List.of(75, 78, 81), //rightColumn
-            List.of(73, 77, 81), //leftDiagonal
-            List.of(75, 77, 79) //rightDiagonal
-    );
-
-    static final List<List<List<Integer>>> allGrids = List.of(
-            gridOne, gridTwo, gridThree, gridFour, gridFive, gridSix, gridSeven, gridEight, gridNine
-    );
-
-
-    //Trying to shorten the amount of typing by using already grids and determine the winner if either the Player or AI has already taken certain lines of grids
-//    static final List<List<List<List<Integer>>>> winConditions = List.of(
-//            List.of(gridOne, gridTwo, gridThree),
-//            List.of(gridFour, gridFive, gridSix),
-//            List.of(gridSeven, gridEight, gridNine),
-//            List.of(gridOne, gridFour, gridSeven),
-//            List.of(gridTwo, gridFive, gridEight),
-//            List.of(gridThree, gridSix, gridNine),
-//            List.of(gridOne, gridFive, gridNine),
-//            List.of(gridThree, gridFive, gridSeven)
-//    );
 
     static final List<List<Integer>> tempWinConditions = List.of(
             List.of(1,2,3,4,5,6,7,8,9,37,38,39,40,41,42,43,44,45,73,74,75,76,77,78,79,80,81), //leftDiagonal
