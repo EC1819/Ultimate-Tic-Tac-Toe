@@ -81,7 +81,7 @@ public class Main {
                 break;
             }
             int aiPosition = forcedChoices.get(random.nextInt(forcedChoices.size()));
-            placement(gameBoard, aiPosition, "Other");
+            placement(gameBoard, aiPosition, "AI");
             checkingAllGrids(gameBoard);
             printingGameBoard(gameBoard);
             String result = winCondition(gameBoard);
