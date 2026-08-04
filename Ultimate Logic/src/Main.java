@@ -84,7 +84,7 @@ public class Main {
             placement(gameBoard, aiPosition, "Other");
             checkingAllGrids(gameBoard);
             printingGameBoard(gameBoard);
-            String result = winCondition();
+            String result = winCondition(gameBoard);
             if (!result.isEmpty()) {
                 System.out.println(result);
                 break;
@@ -117,7 +117,7 @@ public class Main {
             placement(gameBoard, playerPosition, "Player");
             checkingAllGrids(gameBoard);
             printingGameBoard(gameBoard);
-            result = winCondition();
+            result = winCondition(gameBoard);
             if (!result.isEmpty()) {
                 System.out.println(result);
                 break;
@@ -215,7 +215,7 @@ public class Main {
         return allGrids.get(gridNumber - 1);
     }
 
-    public static String winCondition() {
+    public static String winCondition(char[][] gameBoard) {
         for(List<Integer> metaLine : gridPattern) {
             if(allWonBy(metaLine, "Player")) {
                 return "Congrats you won";
@@ -223,10 +223,21 @@ public class Main {
                 return "The A.I wins";
             }
         }
-        if (playerPositions.size() + aiPositions.size() == 81) {
+        if (isBoardFull(gameBoard)) {
             return "Draw";
         }
         return "";
+    }
+
+    public static boolean isBoardFull(char[][] gameBoard) {
+        for (int row = 0; row < 11; row++) {
+            for (int col = 0; col < 11; col++) {
+                if (gameBoard[row][col] == ' ') {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     //Checking if the Player or AI has won all the grids to win the game
