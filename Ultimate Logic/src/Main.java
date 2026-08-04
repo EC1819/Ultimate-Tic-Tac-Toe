@@ -107,7 +107,7 @@ public class Main {
 
             playerPosition = scanner.nextInt();
             while(!playerChoices.contains(playerPosition)) {
-                if (playerPositions.contains(playerPosition) || aiPositions.contains(playerPosition)) {
+                if (!isSpotEmpty(gameBoard, playerPosition)) {
                     System.out.println("Spot is already taken. Please choose another position");
                 } else {
                     System.out.println("The spot chosen is not in the correct grid");
@@ -173,7 +173,6 @@ public class Main {
         claimedGrids.add(gridNumber);
 
         char symbol = winner.equals("Player") ? 'X' : 'O';
-        ArrayList<Integer> targetList = winner.equals("Player") ? playerPositions : aiPositions;
 
         int metaRow = (gridNumber - 1) / 3;
         int metaCol = (gridNumber - 1) % 3;
@@ -184,10 +183,6 @@ public class Main {
             for (int col = startCol; col < startCol + 3; col++) {
                 gameBoard[row][col] = symbol;
             }
-        }
-
-        for (int spot : spotsInGrid(gridNumber)) {
-            targetList.add(spot);
         }
     }
 
@@ -326,10 +321,20 @@ public class Main {
 
         List<Integer> available = new ArrayList<>();
         for (int spot : candidates) {
-            if(!playerPositions.contains(spot) && !aiPositions.contains(spot)) {
+            if(isSpotEmpty(gameBoard, spot)) {
                 available.add(spot);
             }
         }
         return available;
+    }
+
+    public static boolean isSpotEmpty(char[][] gameBoard, int position) {
+        int gridIndex = (position - 1) / 9;
+        int withinGrid = (position - 1) % 9;
+        int startRow = (gridIndex / 3) * 4;
+        int startCol = (gridIndex % 3) * 4;
+        int rowOffset = withinGrid / 3;
+        int colOffset = withinGrid % 3;
+        return gameBoard[startRow + rowOffset][startCol + colOffset] == ' ';
     }
 }
